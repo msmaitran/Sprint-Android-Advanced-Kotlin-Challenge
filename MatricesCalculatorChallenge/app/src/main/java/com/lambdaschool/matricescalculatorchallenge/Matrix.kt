@@ -4,12 +4,8 @@ package com.lambdaschool.matricescalculatorchallenge
 object Matrix {
 
     var height: Int = 2
-//        get() = field
-//        set(value){field = value}
 
     var width: Int = 2
-//        get() = field
-//        set(value) {field = value}
 
     val matrixTop = Array(height) { Array(width) { 0 } }
     val matrixBottom = Array(height) { Array(width) { 0 } }
