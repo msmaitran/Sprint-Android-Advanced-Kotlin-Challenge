@@ -10,6 +10,10 @@ import com.lambdaschool.matricescalculatorchallenge.controllers.HomeController
 
 class MainActivity : AppCompatActivity() {
 
+    companion object{
+        val SOLUTION_KEY = "Solution"
+    }
+
     private lateinit var router: Router
     private val container: ViewGroup by lazy {
         this.findViewById<ViewGroup>(R.id.activity_main_parent)

@@ -1,24 +1,57 @@
 package com.lambdaschool.matricescalculatorchallenge
 
-import java.io.Serializable
 
-class Matrix (var matrix: Array<Array<Int>>): Serializable {
+object Matrix {
 
-    fun multiply(m: Matrix): Matrix {
-        val first = (matrix[0][0] * m.matrix[0][0]) + (matrix[0][1] * m.matrix[1][0])
-        val second = (matrix[0][0] * m.matrix[0][1]) + (matrix[0][1] * m.matrix[1][1])
-        val third = (matrix[1][0] * m.matrix[0][0]) + (matrix[1][1] * m.matrix[1][0])
-        val fourth = (matrix[1][0] * m.matrix[0][1]) + (matrix[1][1] * m.matrix[1][1])
+    var height: Int = 2
+//        get() = field
+//        set(value){field = value}
 
-        val solutionMatrix = Matrix(Array(2) {Array(2) {0} })
-        val solutionFirstColumn = intArrayOf(first, third)
-        val solutionSecondColumn = intArrayOf(second, fourth)
+    var width: Int = 2
+//        get() = field
+//        set(value) {field = value}
 
-        solutionMatrix.matrix[0][0] = first
-        solutionMatrix.matrix[0][1] = second
-        solutionMatrix.matrix[1][0] = third
-        solutionMatrix.matrix[1][1] = fourth
+    val matrixTop = Array(height) { Array(width) { 0 } }
+    val matrixBottom = Array(height) { Array(width) { 0 } }
 
-        return solutionMatrix
+}
+
+fun matrix(height: Int, width: Int): Array<Array<Int>> {
+    return Array(height) {Array(width) {0} }
+}
+
+operator fun Array<Array<Int>>.get(x: Int, y: Int): Int{
+    return this [x][y]
+}
+
+operator fun Array<Array<Int>>.set(x: Int, y: Int): Int{
+    return this [x][y]
+}
+
+operator fun Array<Array<Int>>.times(matrix: Array<Array<Int>>): ArrayList<String> {
+    val row1 = matrix.size
+    val column1 = matrix.size
+    val row2 = matrix.size
+    val column2 = matrix.size
+
+    // Multiplying Two matrices
+    val product = Array(row1) {IntArray(column2)}
+    for (i in 0 until row1) {
+            for (j in 0 until column2) {
+                for (k in 0 until column1) {
+                    product[i][j] += this[i][k] * matrix[k][j]
+            }
+        }
     }
+
+    val solution = ArrayList<String>()
+
+    product.forEach {
+        it.forEach {
+            if (it != 0){
+                solution.add("$it")
+            }
+        }
+    }
+    return solution
 }
