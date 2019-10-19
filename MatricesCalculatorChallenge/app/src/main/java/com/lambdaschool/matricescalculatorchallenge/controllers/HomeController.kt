@@ -43,11 +43,10 @@ class HomeController: BaseController() {
             matrixBottom[0][1] = etBottomSecond.getNumber()
             matrixBottom[1][0] = etBottomThird.getNumber()
             matrixBottom[1][1] = etBottomFourth.getNumber()
-
+            
             if (Matrix.width == Matrix.height) {
                 val solution = matrixTop.times(matrixBottom)
                 args.putStringArrayList(MainActivity.SOLUTION_KEY, solution)
-
                 router.pushController(
                     RouterTransaction.with(SolutionsController(args))
                         .pushChangeHandler(HorizontalChangeHandler())
