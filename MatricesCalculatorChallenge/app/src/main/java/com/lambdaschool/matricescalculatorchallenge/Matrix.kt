@@ -7,9 +7,6 @@ object Matrix {
 
     var width: Int = 2
 
-    val matrixTop = Array(height) { Array(width) { 0 } }
-    val matrixBottom = Array(height) { Array(width) { 0 } }
-
 }
 
 fun matrix(height: Int, width: Int): Array<Array<Int>> {
